@@ -245,8 +245,8 @@ class ASTRO:
 
     # Cosmological Parameters
     H0_HUBBLE = 70  # km/s/Mpc (Hubble constant)
-    OMEGA_M = 0.315  # matter density parameter
-    OMEGA_LAMBDA = 0.685  # dark energy density parameter
+    OMEGA_M = 0.3150  # matter density parameter
+    OMEGA_LAMBDA = 0.6849  # dark energy density parameter
     OMEGA_K = 0  # curvature density parameter
     OMEGA_RADIATION = 0.0001  # radiation density parameter
 

@@ -4,19 +4,16 @@
 <!-- markdownlint-disable html -->
 <!-- markdownlint-disable no-duplicate-header -->
 
-<div align="center" >
-  <img src="Media/Aspen_Hills2.png" width="70%" alt="Aspen Logo surrounded by aspen trees with golden leaves and white bark">
-  <!--hr style="margin-top: 4px; margin-bottom: 0px;"-->
-  <div align="center" style="margin-top: 0; margin-bottom: 0; padding-top: 10px; padding-bottom: 10px; line-height: 1;">
-    <a href="https://github.com/AstroALee/ASPEN" target="_blank" style="margin: 2px;"><img alt="GitHub" src="https://img.shields.io/badge/Github-Aspen-ca752d?style=for-the-badge"></a>
-  </div>
-  <hr style="margin-top: 0; margin-bottom: 2px;" width="40%">
+<div align="center" style="margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; line-height: 1;">
+  <img src="Media/Aspen_Hills2.png" width="80%" alt="Aspen Logo surrounded by aspen trees with golden leaves and white bark">
+  </br></br>
+  <a href="https://github.com/AstroALee/ASPEN" target="_blank" style="margin: 0; padding-bottom: 0"><img alt="GitHub" src="https://img.shields.io/badge/Github-Aspen-ca752d?style=for-the-badge"></a>
+  <hr style="margin: 0; padding-top: 0;" width="50%">
 </div>
-
 
 ## Description 
 
-ASPEN: Aaron's Scientific Python Empowering Namespaces. (Sorry...) Useful tools and quality-of-life improvements. While I attempt to follow best practices throughout, I cannot claim that I always adhere to them, nor am I claiming that everything here is error-free. 
+ASPEN: Aaron's Scientific Python Empowering Namespaces. (Sorry...) Useful tools and quality-of-life improvements. While I attempt to follow best practices throughout, I cannot claim that I always adhere to them, nor am I claiming that everything here is error-free. Please let me know if you find an egregious mistake that has escaped my eye. Please keep overtly-subjective opinions to yourself. 
 
 
 
@@ -27,7 +24,7 @@ ASPEN/
 ├── aspen/
 │   ├── __init__.py               # Initialization 
 │   ├── constants_conversions.py  # Physics and Astro conversions and constants 
-│   └── XX.py                     # XX
+│   └── colors.py                 # Colorbar generator and college-specific colors (not there yet)
 ├── tests/
 │   ├── test_XX.py        # Tests for XX
 │   └── test_XX.py        # Tests for XX

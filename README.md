@@ -20,6 +20,27 @@
 
 ASPEN: Aaron's Scientific Python Empowering Namespaces. (sorry...) Useful tools and quality of life improvements. 
 
+
+
+## 📁 Project Structure
+
+```
+ASPEN/
+├── aspen/
+│   ├── __init__.py               # Initialization 
+│   ├── constants_conversions.py  # Physics and Astro conversions and constants 
+│   └── XX.py                     # XX
+├── tests/
+│   ├── test_XX.py        # Tests for XX
+│   └── test_XX.py        # Tests for XX
+├── Media/
+│   └── *.png             # Project banner images
+├── mypy.ini              # Type checker config (not there yet)
+└── README.md             # This file
+└── LICENSE.txt           # MIT License description 
+```
+
+
 ## License
 
 This repo uses the MIT license. If anything here is helpful to you, by all means.  

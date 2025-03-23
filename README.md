@@ -8,9 +8,7 @@
   <img src="Media/Aspen_Hills2.png" width="70%" alt="Aspen Logo surrounded by aspen trees with golden leaves and white bark">
   <!--hr style="margin-top: 4px; margin-bottom: 0px;"-->
   <div align="center" style="margin-top: 0; margin-bottom: 0; padding-top: 10px; padding-bottom: 10px; line-height: 1;">
-    <a href="https://github.com/AstroALee/ASPEN" target="_blank" style="margin: 2px;"><img alt="GitHub"
-    src="https://img.shields.io/badge/Github-Aspen-ca752d?style=for-the-badge
-    "></a>
+    <a href="https://github.com/AstroALee/ASPEN" target="_blank" style="margin: 2px;"><img alt="GitHub" src="https://img.shields.io/badge/Github-Aspen-ca752d?style=for-the-badge"></a>
   </div>
   <hr style="margin-top: 0; margin-bottom: 2px;" width="40%">
 </div>

@@ -16,7 +16,7 @@
 
 ## Description 
 
-ASPEN: Aaron's Scientific Python Empowering Namespaces. (sorry...) Useful tools and quality of life improvements. 
+ASPEN: Aaron's Scientific Python Empowering Namespaces. (Sorry...) Useful tools and quality-of-life improvements. While I attempt to follow best practices throughout, I cannot claim that I always adhere to them, nor am I claiming that everything here is error-free. 
 
 
 
@@ -41,7 +41,9 @@ ASPEN/
 
 ## License
 
-This repo uses the MIT license. If anything here is helpful to you, by all means.  
+This repo uses the MIT license. If anything here is helpful to you, please don't hesitate to use it.  
+
+MIT License ©️ 2025 Aaron T. Lee
 
 
 

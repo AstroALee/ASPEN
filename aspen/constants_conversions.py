@@ -110,6 +110,11 @@ class CONVERSIONS:
     MILE_TO_METER = 1609.34  # mi to m
     METER_TO_MILE = 1 / MILE_TO_METER  # m to mi
 
+    # Magnetic fields 
+    GAUSS_TO_TESLA = 1e-4  # G to T
+    TESLA_TO_GAUSS = 1 / GAUSS_TO_TESLA  # T to G
+
+
     # Times 
     YEAR_TO_SECOND = 365.25 * 24 * 3600  # yr to s
     SECOND_TO_YEAR = 1 / YEAR_TO_SECOND  # s to yr

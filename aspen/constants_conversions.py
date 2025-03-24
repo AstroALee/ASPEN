@@ -130,6 +130,13 @@ class CONVERSIONS:
     JOULE_TO_EV = 1 / EV_TO_JOULE  # J to eV
     ERG_TO_JOULE = 1e-7  # erg to J
     JOULE_TO_ERG = 1 / ERG_TO_JOULE  # J to erg
+    CALORIE_TO_JOULE = 4.184  # cal to J
+    JOULE_TO_CALORIE = 1 / CALORIE_TO_JOULE  # J to cal
+    BTU_TO_JOULE = 1055.06  # BTU to J
+    JOULE_TO_BTU = 1 / BTU_TO_JOULE  # J to BTU
+    KILOCAL_TO_JOULE = 4184  # kcal to J
+    JOULE_TO_KILOCAL = 1 / KILOCAL_TO_JOULE  # J to kcal
+
 
     # Masses 
     LBS_TO_KG = 0.453592  # lbs to kg
@@ -156,6 +163,58 @@ class CONVERSIONS:
     RADIAN_TO_ARCMIN = 1 / ARCMIN_TO_RADIAN  # rad to arcmin
     ARCSEC_TO_DEGREE = 2.77778e-4  # arcsec to degree
     DEGREE_TO_ARCSEC = 1 / ARCSEC_TO_DEGREE  # degree to arcsec
+
+    # Converting SI units to CGS units
+
+    # Length
+    LENGTH_SI_TO_CGS = 1e2  # m to cm
+    LENGTH_CGS_TO_SI = 1 / LENGTH_SI_TO_CGS  # cm to m
+    # Time
+    TIME_SI_TO_CGS = 1  # s to s
+    TIME_CGS_TO_SI = 1 / TIME_SI_TO_CGS  # s to s
+    # Mass
+    MASS_SI_TO_CGS = 1e3  # kg to g
+    MASS_CGS_TO_SI = 1 / MASS_SI_TO_CGS  # g to kg
+    # Energy
+    ENERGY_SI_TO_CGS = 1e3  # J to erg
+    ENERGY_CGS_TO_SI = 1 / ENERGY_SI_TO_CGS  # erg to J
+    # Force
+    FORCE_SI_TO_CGS = 1e5  # N to dyn
+    FORCE_CGS_TO_SI = 1 / FORCE_SI_TO_CGS  # dyn to N
+    # Power
+    POWER_SI_TO_CGS = 1e7  # W to erg/s
+    POWER_CGS_TO_SI = 1 / POWER_SI_TO_CGS  # erg/s to W
+    # Pressure
+    PRESSURE_SI_TO_CGS = 1e-6  # Pa to dyne/cm^2
+    PRESSURE_CGS_TO_SI = 1 / PRESSURE_SI_TO_CGS  # dyne/cm^2 to Pa
+    # Magnetic field
+    MAGNETIC_FIELD_SI_TO_CGS = 1e4  # T to G
+    MAGNETIC_FIELD_CGS_TO_SI = 1 / MAGNETIC_FIELD_SI_TO_CGS  # G to T
+    # Electric field
+    ELECTRIC_FIELD_SI_TO_CGS = 1e3  # V/m to statV/cm
+    ELECTRIC_FIELD_CGS_TO_SI = 1 / ELECTRIC_FIELD_SI_TO_CGS  # statV/cm to V/m
+    # Capacitance
+    CAPACITANCE_SI_TO_CGS = 1e-9  # F to statF
+    CAPACITANCE_CGS_TO_SI = 1 / CAPACITANCE_SI_TO_CGS  # statF to F
+    # Inductance
+    INDUCTANCE_SI_TO_CGS = 1e-3  # H to statH
+    INDUCTANCE_CGS_TO_SI = 1 / INDUCTANCE_SI_TO_CGS  # statH to H
+    # Charge
+    CHARGE_SI_TO_CGS = 1e-3  # C to statC
+    CHARGE_CGS_TO_SI = 1 / CHARGE_SI_TO_CGS  # statC to C
+    # Current
+    CURRENT_SI_TO_CGS = 1e-3  # A to statA
+    CURRENT_CGS_TO_SI = 1 / CURRENT_SI_TO_CGS  # statA to A
+    # Magnetic flux
+    MAGNETIC_FLUX_SI_TO_CGS = 1e-3  # Wb to maxwell
+    MAGNETIC_FLUX_CGS_TO_SI = 1 / MAGNETIC_FLUX_SI_TO_CGS  # maxwell to Wb
+    # Electric potential
+    ELECTRIC_POTENTIAL_SI_TO_CGS = 1e-3  # V to statV
+    ELECTRIC_POTENTIAL_CGS_TO_SI = 1 / ELECTRIC_POTENTIAL_SI_TO_CGS  # statV to V
+    # Induced voltage
+    INDUCED_VOLTAGE_SI_TO_CGS = 1e-3  # V to statV
+    INDUCED_VOLTAGE_CGS_TO_SI = 1 / INDUCED_VOLTAGE_SI_TO_CGS  # statV to V
+    
 
 
 
@@ -197,6 +256,8 @@ class ASTRO:
     # Solar and Sidereal time
     SOLAR_DAY = 24 * 3600  # seconds
     SIDEREAL_DAY = 23 * 3600 + 56 * 60 + 4.0916  # seconds, time to rotate 2pi 
+    SOLAR_YEAR = 365.25 * 24 * 3600  # seconds
+    SIDEREAL_YEAR = 365.256363004 * 24 * 3600  # seconds
 
     # Stellar parameters of the Sun 
     M_SUN = 1.9891e30  # kg
@@ -247,6 +308,13 @@ class ASTRO:
     I_MOON = 5.145  # degrees (orbit inclination relative to ecliptic)
     P_MOON = 27.321661  # days (orbital period)
     ROI_MOON = 1.53  # degrees (rotation axis orientation relative to ecliptic)
+
+    # Milky Way parameters (check these)
+    MW_RADIUS = 5.0e4 * LIGHT_YEAR  # meters (radius of Milky Way)
+    MW_MASS = 1.5e12 * M_SUN  # kg (mass of Milky Way)
+    MW_LUMINOSITY = 5e10 * L_SUN  # Watts (luminosity of Milky Way)
+    MW_BRIGHTNESS = MW_LUMINOSITY / (4 * np.pi * MW_RADIUS**2)  # W/m^2 (brightness of Milky Way)
+    MW_SCALE_LENGTH = 1.5e4 * LIGHT_YEAR  # meters (scale length of Milky Way)
 
     # Cosmological Parameters
     H0_HUBBLE = 70  # km/s/Mpc (Hubble constant)

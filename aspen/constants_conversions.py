@@ -26,8 +26,8 @@ class PhysicsConstants:
     # Faraday's constant
     FARADAY: float = 96485.3321233100184  # C/mol
 
-    # Permitivity and Permeability of free space
-    EPSILON_0: float = 8.854187817e-12  # F/m
+    # Permitivity and Permeability of Free Space
+    EPSILON_0: float = 8.8541878128e-12  # F/m
     MU_0: float = 1.2566370614e-6  # N/A^2
 
     # Coulomb's constant (8.9875517923e9)
@@ -79,7 +79,7 @@ class PhysicsConstants:
 @dataclass(frozen=True)
 class ConversionsAndDerivedUnits:
     """
-    Conversion factors and derived units. All are multiplicative factors unless noted in name.
+    Conversion factors and derived units. All are multiplicative factors unless noted in the name.
     """
 
     # Metric Prefixes (you don't have this memorized yet?)
@@ -299,23 +299,23 @@ class AstroConstantsAndUsefulNumbers:
     # Orbital Parameters of Earth
     A_EARTH: float = 1.496e11  # meters (semi-major axis)
     E_EARTH: float = 0.0167  # eccentricity
-    I_EARTH: float = 0  # degrees (orbit inclination relative to ecliptic)
+    I_EARTH: float = 0  # degrees (orbit inclination relative to the ecliptic)
     P_EARTH_DAY: float = 365.256363004  # days (orbital period)
-    ROI_EARTH: float = 23.45  # degrees (rotation axis orientation relative to ecliptic)
+    ROI_EARTH: float = 23.45  # degrees (rotation axis orientation relative to the ecliptic)
 
     # Orbital Parameters of Jupiter 
     A_JUPITER: float = 7.785e11  # meters (semi-major axis)
     E_JUPITER: float = 0.0489  # eccentricity
-    I_JUPITER: float = 1.303  # degrees (orbit inclination relative to ecliptic)
+    I_JUPITER: float = 1.303  # degrees (orbit inclination relative to the ecliptic)
     P_JUPITER_DAY: float = 4332.589  # days (orbital period)
-    ROI_JUPITER: float = 3.13  # degrees (rotation axis orientation relative to ecliptic)
+    ROI_JUPITER: float = 3.13  # degrees (rotation axis orientation relative to the ecliptic)
 
     # Orbital Parameters of Moon 
     A_MOON: float = 3.844e8  # meters (semi-major axis)
     E_MOON: float = 0.0549  # eccentricity
-    I_MOON: float = 5.145  # degrees (orbit inclination relative to ecliptic)
+    I_MOON: float = 5.145  # degrees (orbit inclination relative to the ecliptic)
     P_MOON_DAY: float= 27.321661  # days (orbital period)
-    ROI_MOON: float = 1.53  # degrees (rotation axis orientation relative to ecliptic)
+    ROI_MOON: float = 1.53  # degrees (rotation axis orientation relative to the ecliptic)
 
     # Milky Way parameters (check these)
     MW_RADIUS: float = 5.0e4 * LIGHT_YEAR  # meters (radius of Milky Way)

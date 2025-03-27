@@ -1,7 +1,6 @@
-
-
-import numpy as np 
 from dataclasses import dataclass
+
+import numpy as np
 import numpy.typing as npt
 
 @dataclass(frozen=True)
@@ -17,7 +16,7 @@ class PhysicsConstants:
     G_NEWTON: float = 6.67430e-11  # m^3 kg^-1 s^-2
 
 
-    # Electromagnetism 
+    # Electromagnetism
     # =-=-=-=-=-=--==-=-==-=-=-=-==-=-===-=-=-
 
     # Speed of light in vacuum
@@ -220,7 +219,6 @@ class ConversionsAndDerivedUnits:
     # Induced voltage
     INDUCED_VOLTAGE_SI_TO_CGS: float = 1e-3  # V to statV
     INDUCED_VOLTAGE_CGS_TO_SI: float = 1 / INDUCED_VOLTAGE_SI_TO_CGS  # statV to V
-    
 
 
 @dataclass(frozen=True)
@@ -339,11 +337,17 @@ class AstroConstantsAndUsefulNumbers:
     R_UNIVERSE: float = 46.508e9 * 3.08567758149137e16  # meters (radius of observable universe)
 
     # Solar System Data 
-    M_SOLAR_SYSTEM_ARR: npt.NDArray[np.float64] = np.array([0.33,4.87,M_EARTH/1e24,0.642,M_JUPITER/1e24,568,86.8,102,0.013])*1e24 # kg
-    A_SOLAR_SYSTEM_AU_ARR: npt.NDArray[np.float64] = np.array([0.387,0.723,1.0,1.524,5.203,9.537,19.191,30.069,39.482]) # AU  
-    E_SOLAR_SYSTEM_ARR: npt.NDArray[np.float64] = np.array([0.205,0.006,00.0167,0.093,0.048,0.054,0.047,0.0086,0.248]) # eccentricity
-    P_SOLAR_SYSTEM_YR_ARR: npt.NDArray[np.float64] = np.array([0.24,0.62,1,1.88,11.86,29.46,84.01,164.8,248.6]) # years 
-    R_SOLAR_SYSTEM_ARR: npt.NDArray[np.float64] = 0.5*np.array([4879,12104,12742,6779,139822,116464,50724,49244,2376])*1e3 # radius, meters 
-    MEAN_ANOM_SOLAR_SYSTEM_ARR: npt.NDArray[np.float64] = np.array([174.79, 50.44, 0, 19.412, 19.65, -42.48, 142.26, 259.90, 14.53]) # mean ano, degrees 
+    M_SOLAR_SYSTEM_ARR: npt.NDArray[np.float64] = \
+        np.array([0.33,4.87,M_EARTH/1e24,0.642,M_JUPITER/1e24,568,86.8,102,0.013])*1e24 # kg
+    A_SOLAR_SYSTEM_AU_ARR: npt.NDArray[np.float64] = \
+        np.array([0.387,0.723,1.0,1.524,5.203,9.537,19.191,30.069,39.482]) # AU  
+    E_SOLAR_SYSTEM_ARR: npt.NDArray[np.float64] = \
+        np.array([0.205,0.006,00.0167,0.093,0.048,0.054,0.047,0.0086,0.248]) # eccentricity
+    P_SOLAR_SYSTEM_YR_ARR: npt.NDArray[np.float64] = \
+        np.array([0.24,0.62,1,1.88,11.86,29.46,84.01,164.8,248.6]) # years 
+    R_SOLAR_SYSTEM_ARR: npt.NDArray[np.float64] = \
+        0.5*np.array([4879,12104,12742,6779,139822,116464,50724,49244,2376])*1e3 # radius, meters 
+    MEAN_ANOM_SOLAR_SYSTEM_ARR: npt.NDArray[np.float64] = \
+        np.array([174.79, 50.44, 0, 19.412, 19.65, -42.48, 142.26, 259.90, 14.53]) # mean ano, degrees 
 
     NAMES_SOLAR_SYSTEM_LIST: list[str] = ["Mercury","Venus","Earth","Mars","Jupiter","Saturn","Uranus","Neptune","Pluto"]

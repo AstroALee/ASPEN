@@ -24,7 +24,7 @@ ASPEN/
 ├── aspen/
 │   ├── __init__.py               # Initialization 
 │   ├── constants_conversions.py  # Physics and Astro conversions and constants 
-│   └── colors.py                 # Colorbar generator and college-specific colors (not there yet)
+│   └── colors.py                 # Colorbar generator and college-specific colors
 ├── tests/
 │   ├── test_XX.py        # Tests for XX
 │   └── test_XX.py        # Tests for XX

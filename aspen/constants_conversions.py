@@ -1,16 +1,41 @@
 from dataclasses import dataclass
 
 import numpy as np
-import numpy.typing as npt
+
+'''
+Frozen classes of constants and conversions for use in physics and astronomy calculations.
+Must create an instance of the class to access the values.
+(Could then rename the instance to something shorter for ease of use.)
+
+e.g., 
+import constants_conversions as cc 
+
+PHY = cc.PhysicsConstants()
+'''
 
 @dataclass(frozen=True)
 class PhysicsConstants:
     """
     A collection of fundamental physical constants, almost always in SI units.
+
+    Use the list functions to print out the constants:
+    list_gravity_constants()
+    list_electromagnetism_constants()
+    list_thermodynamics_constants()
+    list_quantum_mechanics_constants()
     """
+
+    # Mass of protons, neutrons, and electrons
+    # Source: CODATA 2018
+    M_PROTON: float = 1.67262192369e-27  # kg
+    M_NEUTRON: float = 1.67492749804e-27  # kg
+    M_ELECTRON: float = 9.1093837015e-31  # kg
 
     # Gravity 
     # =-=-=-=-=-=--==-=-==-=-=-=-==-=-===-=-=-
+    def list_gravity_constants(self):
+        print(f'''G_NEWTON: {self.G_NEWTON} , m^3 kg^-1 s^-2 (Newton's gravitational constant)''')
+        return 
 
     # Gravitational constant
     G_NEWTON: float = 6.67430e-11  # m^3 kg^-1 s^-2
@@ -18,6 +43,14 @@ class PhysicsConstants:
 
     # Electromagnetism
     # =-=-=-=-=-=--==-=-==-=-=-=-==-=-===-=-=-
+    def list_electromagnetism_constants(self):
+        print(f'''C_LIGHT: {self.C_LIGHT} , m/s (Speed of light in vacuum)''')
+        print(f'''FARADAY: {self.FARADAY} , C/mol (Faraday's constant)''')
+        print(f'''EPSILON_0: {self.EPSILON_0} , F/m (Permitivity of Free Space)''')
+        print(f'''MU_0: {self.MU_0} , N/A^2 (Permeability of Free Space)''')
+        print(f'''K_COULOMB: {self.K_COULOMB} , N*m^2/C^2 (Coulomb's constant)''')
+        print(f'''E_CHARGE: {self.E_CHARGE} , C (Fundamental charge unit)''')
+        return
 
     # Speed of light in vacuum
     C_LIGHT: float = 299792458  # m/s
@@ -35,9 +68,22 @@ class PhysicsConstants:
     # Fundamental charge unit 
     E_CHARGE: float = 1.602176634e-19  # C
 
+    # Classical electron radius
+    R_ELECTRON: float = E_CHARGE**2 / (4 * np.pi * EPSILON_0 * M_ELECTRON * C_LIGHT**2)  # m
+
+    # Particle Energy Equivalents 
+    M_PROTON_MEV: float = M_PROTON * C_LIGHT**2 * (1/1.602176634e-19) / 1e6  # MeV
+    M_NEUTRON_MEV: float = M_NEUTRON * C_LIGHT**2 * (1/1.602176634e-19) / 1e6  # MeV
+    M_ELECTRON_MEV: float = M_ELECTRON * C_LIGHT**2 * (1/1.602176634e-19) / 1e6  # MeV
+
 
     # Thermodynamics
     # =-=-=-=-=-=--==-=-==-=-=-=-==-=-===-=-=-
+    def list_thermodynamics_constants(self):
+        print(f'''N_AVOGADRO: {self.N_AVOGADRO} , mol^-1 (Avogadro's number)''')
+        print(f'''K_BOLTZMANN: {self.K_BOLTZMANN} , J/K (Boltzmann constant)''')
+        print(f'''R_GAS: {self.R_GAS} , J/(mol*K) (Ideal gas constant)''')
+        return
 
     # Avogadro's number
     N_AVOGADRO: float = 6.02214076e23  # mol^-1
@@ -51,6 +97,17 @@ class PhysicsConstants:
 
     # Quantum Mechanics
     # =-=-=-=-=-=--==-=-==-=-=-=-==-=-===-=-=-
+    def list_quantum_mechanics_constants(self):
+        print(f'''H_PLANCK: {self.H_PLANCK} , J*s (Planck's constant)''')
+        print(f'''H_PLANCK_REDUCED: {self.H_PLANCK_REDUCED} , J*s (Reduced Planck's constant)''')
+        print(f'''SB_CONSTANT: {self.SB_CONSTANT} , W/(m^2*K^4) (Stefan-Boltzmann constant)''')
+        print(f'''A_RADIATION: {self.A_RADIATION} , J/(m^3*K^4) (Radiation constant)''')
+        print(f'''M_PROTON: {self.M_PROTON} , kg (Mass of a proton)''')
+        print(f'''M_NEUTRON: {self.M_NEUTRON} , kg (Mass of a neutron)''')
+        print(f'''M_ELECTRON: {self.M_ELECTRON} , kg (Mass of an electron)''')
+        print(f'''AMU: {self.AMU} , kg (Atomic Mass Unit)''')
+        print(f'''BOHR_RADIUS: {self.BOHR_RADIUS} , m (Bohr radius)''')
+        return
 
     # Planck's constant
     H_PLANCK: float = 6.62607015e-34  # J*s 
@@ -62,23 +119,49 @@ class PhysicsConstants:
     # Radiation constant
     A_RADIATION: float = 4 * SB_CONSTANT / C_LIGHT  # J/(m^3*K^4)
 
-    # Mass of protons, neutrons, and electrons
-    # Source: CODATA 2018
-    M_PROTON: float = 1.67262192369e-27  # kg
-    M_NEUTRON: float = 1.67492749804e-27  # kg
-    M_ELECTRON: float = 9.1093837015e-31  # kg
-
     # Atomic Mass Unit 
     AMU: float = 1.66053906660e-27  # kg
 
+    # Muon mass 
+    M_MUON: float = 0.113428925*AMU  # kg
+
+    # G factors 
+    G_FAC_ELECTRON: float = -2.00231930436182  # unitless
+    G_FAC_PROTON: float = 5.5856946893  # unitless
+    G_FAC_NEUTRON: float = -3.82608545  # unitless
+    G_FAC_MUON: float = -2.0023318418  # unitless
+
+    # Fine Structure constant
+    ALPHA: float = E_CHARGE**2 / (4 * np.pi * EPSILON_0 * H_PLANCK_REDUCED * C_LIGHT)  # unitless
+
     # Bohr radius
-    BOHR_RADIUS: float = 5.29177210903e-11  # m
+    BOHR_RADIUS: float = H_PLANCK_REDUCED/(ALPHA*M_ELECTRON*C_LIGHT)  # m
+
+    # Bohr magneton
+    BOHR_MAGNETON: float = E_CHARGE * H_PLANCK_REDUCED / (2 * M_ELECTRON)  # J/T
+
+    # Alpha particle mass
+    M_ALPHA: float = 4.001506179127*AMU  # kg
+
+    # Stefan-Boltzmann constant
+    SIGMA_SB: float = 5.670374419e-8  # W/(m^2*K^4)
+
+    # Wien's displacement constant
+    WIEN_DISPLACEMENT: float = 2.897771955e-3  # m*K
 
 
 @dataclass(frozen=True)
 class ConversionsAndDerivedUnits:
     """
     Conversion factors and derived units. All are multiplicative factors unless noted in the name.
+
+    e.g., 
+    (3 meters)*METER_TO_ANGSTROM = 3e10 Å
+    (3e10 Å)*ANGSTROM_TO_METER = 3 meters
+
+    (273.15 Kelvin) + KELVIN_TO_CELSIUS_ADD = 0 Celsius
+    (0 Celsius) + CELSIUS_TO_KELVIN_ADD = 273.15 Kelvin
+
     """
 
     # Metric Prefixes (you don't have this memorized yet?)
@@ -137,6 +220,13 @@ class ConversionsAndDerivedUnits:
     KILOCAL_TO_JOULE: float = 4184  # kcal to J
     JOULE_TO_KILOCAL: float = 1 / KILOCAL_TO_JOULE  # J to kcal
 
+    # Mass-Energy Equivalence
+    KG_TO_JOULE: float = 8.9875517923e16  # kg to J
+    JOULE_TO_KG: float = 1 / KG_TO_JOULE  # J to kg
+    KG_TO_EV: float = KG_TO_JOULE / EV_TO_JOULE  # kg to eV
+    EV_TO_KG: float = 1 / KG_TO_EV  # eV to kg
+
+
     # Angles 
     DEGREE_TO_RADIAN: float = np.pi / 180  # degree to rad
     RADIAN_TO_DEGREE: float = 1 / DEGREE_TO_RADIAN  # rad to degree
@@ -146,6 +236,10 @@ class ConversionsAndDerivedUnits:
     # Masses 
     LBS_TO_KG: float = 0.453592  # lbs to kg
     KG_TO_LBS: float = 1 / LBS_TO_KG  # kg to lbs
+    KG_TO_STONE: float = 0.157473  # kg to stone
+    STONE_TO_KG: float = 1 / KG_TO_STONE  # stone to kg
+    LBS_TO_STONE: float = 0.0714286  # lbs to stone
+    STONE_TO_LBS: float = 1 / LBS_TO_STONE  # stone to lbs
 
     # Temperatures 
     KELVIN_TO_CELSIUS_ADD: float = -273.15  # K to °C
@@ -155,9 +249,11 @@ class ConversionsAndDerivedUnits:
     ATM_TO_PASCAL: float = 101325  # atm to Pa
     PASCAL_TO_ATM: float = 1 / ATM_TO_PASCAL  # Pa to atm
 
-    # Volumes 
+    # Volumes ( 0.001 m^3 = 1 L, which is not (0.001 m)^3)
     LITER_TO_CUBIC_METER: float = 0.001  # L to m^3
     CUBIC_METER_TO_LITER: float = 1 / LITER_TO_CUBIC_METER  # m^3 to L
+    LITER_TO_CUBIC_CM: float = 1000  # L to cm^3
+    CUBIC_CM_TO_LITER: float = 1 / LITER_TO_CUBIC_CM  # cm^3 to L
     GALLON_TO_LITER: float = 3.78541  # gal to L
     LITER_TO_GALLON: float = 1 / GALLON_TO_LITER  # L to gal
 
@@ -229,15 +325,21 @@ class WorldData:
 
     # Population of the USA and world
     USA_POPULATION: float = 333.3e6  # people 
+    LARGEST_CITY_NEW_YORK_POPULATION: float = 8.4e6  # people
+    LARGER_CITY_CHICAGO_POPULATION: float = 2.7e6  # people
+    LARGE_CITY_AUSTIN_POPULATION: float = 1.0e6  # people
+    CITY_MEAN_POPULATION: float = 0.5e6  # people (arithmatic and geometric mean similar)
     WORLD_POPULATION: float = 7.9e9  # people
 
     # Area of the world
-    USA_AREA: float = 9.8e6 * (1000**2)  # m^2
-    WORLD_AREA: float = 510.1e6 * (1000**2)  # m^2
+    USA_CONTINENTAL_AREA: float = 7.7e12  # m^2
+    USA_AREA: float = 9.8e12  # m^2
+    WORLD_LAND_AREA: float = 1.489e14  # m^2
+    WORLD_AREA: float = 5.101e14  # m^2
 
     # Density of the world 
     USA_POP_AREADEN: float = USA_POPULATION / USA_AREA  # people/m^2
-    WORLD_POP_AREADEN: float = WORLD_POPULATION / WORLD_AREA  # people/m^2
+    WORLD_POP_AREADEN: float = WORLD_POPULATION / WORLD_LAND_AREA  # people/m^2
 
 
 @dataclass(frozen=True)
@@ -317,37 +419,46 @@ class AstroConstantsAndUsefulNumbers:
 
     # Milky Way parameters (check these)
     MW_RADIUS: float = 5.0e4 * LIGHT_YEAR  # meters (radius of Milky Way)
-    MW_MASS: float = 1.5e12 * M_SUN  # kg (mass of Milky Way)
+    MW_MASS_HIGH: float = 1.5e12 * M_SUN  # kg (approx mass of Milky Way)
+    MW_MASS_LOW: float = 2.06e11 * M_SUN  # kg (mass of Milky Way from Gaia 23)
+    MW_DARKMATTER_MASS_HIGH: float = 1.44e12 * M_SUN  # kg (approx mass of Milky Way dark matter)
+    MW_DARKMATTER_MASS_LOW: float = 1.400e1 * M_SUN  # kg (mass of Milky Way dark matter from Gaia 23)
+    MW_STELLAR_MASS_HIGH: float = MW_MASS_HIGH - MW_DARKMATTER_MASS_HIGH  # kg (approx mass of Milky Way stars)
+    MW_STELLAR_MASS_LOW: float = MW_MASS_LOW - MW_DARKMATTER_MASS_LOW  # kg (mass of Milky Way stars from Gaia 23)
+    MW_BLACKHOLE_MASS: float = 4.15e6 * M_SUN  # kg (MW central BH) Weilgus et al. 2022
+
     MW_LUMINOSITY: float = 5e10 * L_SUN  # Watts (luminosity of Milky Way)
     MW_BRIGHTNESS: float = MW_LUMINOSITY / (4 * np.pi * MW_RADIUS**2)  # W/m^2 (brightness of Milky Way)
     MW_SCALE_LENGTH: float = 1.5e4 * LIGHT_YEAR  # meters (scale length of Milky Way)
 
     # Cosmological Parameters
     H0_HUBBLE: float = 70  # km/s/Mpc (Hubble constant)
+    H0_HUBBLE_SI: float = H0_HUBBLE * 1e3 / (1e6 * PARSEC)  # 1/s (Hubble constant in SI units)
     OMEGA_M: float = 0.3150  # matter density parameter
     OMEGA_LAMBDA: float = 0.6849  # dark energy density parameter
     OMEGA_K: float = 0  # curvature density parameter
     OMEGA_RADIATION: float = 0.0001  # radiation density parameter
 
     HUBBLE_RADIUS: float = PhysicsConstants.C_LIGHT / H0_HUBBLE  # meters (Hubble radius)
-    HUBBLE_TIME: float = 1 / H0_HUBBLE  # seconds (Hubble time)
+    HUBBLE_TIME_SI: float = 1 / H0_HUBBLE_SI  # seconds (Hubble time)
+    HUBBLE_TIME_GYR: float = HUBBLE_TIME_SI / (1e9*SOLAR_YEAR) # Gyears (Hubble time)
 
     T_CMB: float = 2.72548  # Kelvin (CMB temperature)
     AGE_UNIVERSE: float = 13.8e9 * 365.25 * 24 * 3600  # seconds (age of the universe)
     R_UNIVERSE: float = 46.508e9 * 3.08567758149137e16  # meters (radius of observable universe)
 
     # Solar System Data 
-    M_SOLAR_SYSTEM_ARR: npt.NDArray[np.float64] = \
-        np.array([0.33,4.87,M_EARTH/1e24,0.642,M_JUPITER/1e24,568,86.8,102,0.013])*1e24 # kg
-    A_SOLAR_SYSTEM_AU_ARR: npt.NDArray[np.float64] = \
-        np.array([0.387,0.723,1.0,1.524,5.203,9.537,19.191,30.069,39.482]) # AU  
-    E_SOLAR_SYSTEM_ARR: npt.NDArray[np.float64] = \
-        np.array([0.205,0.006,00.0167,0.093,0.048,0.054,0.047,0.0086,0.248]) # eccentricity
-    P_SOLAR_SYSTEM_YR_ARR: npt.NDArray[np.float64] = \
-        np.array([0.24,0.62,1,1.88,11.86,29.46,84.01,164.8,248.6]) # years 
-    R_SOLAR_SYSTEM_ARR: npt.NDArray[np.float64] = \
-        0.5*np.array([4879,12104,12742,6779,139822,116464,50724,49244,2376])*1e3 # radius, meters 
-    MEAN_ANOM_SOLAR_SYSTEM_ARR: npt.NDArray[np.float64] = \
-        np.array([174.79, 50.44, 0, 19.412, 19.65, -42.48, 142.26, 259.90, 14.53]) # mean ano, degrees 
+    M_SOLAR_SYSTEM_ARR: tuple([np.float64]) = \
+        tuple(np.array([0.33,4.87,M_EARTH/1e24,0.642,M_JUPITER/1e24,568,86.8,102,0.013])*1e24) # kg
+    A_SOLAR_SYSTEM_AU_ARR: tuple([np.float64]) = \
+        tuple(np.array([0.387,0.723,1.0,1.524,5.203,9.537,19.191,30.069,39.482])) # AU  
+    E_SOLAR_SYSTEM_ARR: tuple([np.float64]) = \
+        tuple(np.array([0.205,0.006,00.0167,0.093,0.048,0.054,0.047,0.0086,0.248])) # eccentricity
+    P_SOLAR_SYSTEM_YR_ARR: tuple([np.float64]) = \
+        tuple(np.array([0.24,0.62,1,1.88,11.86,29.46,84.01,164.8,248.6])) # years 
+    R_SOLAR_SYSTEM_ARR: tuple([np.float64]) = \
+        tuple(0.5*np.array([4879,12104,12742,6779,139822,116464,50724,49244,2376])*1e3) # radius, meters 
+    MEAN_ANOM_SOLAR_SYSTEM_ARR: tuple([np.float64]) = \
+        tuple(np.array([174.79, 50.44, 0, 19.412, 19.65, -42.48, 142.26, 259.90, 14.53])) # mean ano, degrees 
 
-    NAMES_SOLAR_SYSTEM_LIST: list[str] = ["Mercury","Venus","Earth","Mars","Jupiter","Saturn","Uranus","Neptune","Pluto"]
+    NAMES_SOLAR_SYSTEM_LIST: tuple[str] = tuple(["Mercury","Venus","Earth","Mars","Jupiter","Saturn","Uranus","Neptune","Pluto"])

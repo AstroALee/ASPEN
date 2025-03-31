@@ -28,6 +28,7 @@ SMC_COLORS: dict[str, str] = {
     "skies" : '#13A3CE' , # brighter sky blue 
 }
 
+# Northwestern University color dictionary
 NORTHWESTERN_COLORS: dict[str, str] = {
     "darkestpurple" : '#260642' , # Darkest purple
     "darkpurple" : '#38185b' , # Dark purple
@@ -38,6 +39,7 @@ NORTHWESTERN_COLORS: dict[str, str] = {
     "lightgray" : '#f0f0f0' , # Light gray
 }
 
+# UC Berkeley color dictionary
 UCB_COLORS: dict[str, str] = {
     "blue" : '#1c2676' , # Berkeley Blue
     "gold" : '#f4b516' , # California Gold
@@ -116,8 +118,8 @@ def make_color_map(listColors: list[str], num_points: int = 512,
 # Saint Mary's College Colormaps 
 SMC_cmap: ListedColormap = make_color_map([SMC_COLORS['red'],SMC_COLORS['origsilver'],SMC_COLORS['navy']])
 
-# Northwestern Colormap 
+# Northwestern Colormap (decent sequential map)
 NU_cmap: ListedColormap = make_color_map([NORTHWESTERN_COLORS['lightestpurple'],NORTHWESTERN_COLORS['lighterpurple'],NORTHWESTERN_COLORS['lightpurple'],NORTHWESTERN_COLORS['purple'],NORTHWESTERN_COLORS['darkpurple'],NORTHWESTERN_COLORS['darkestpurple']])
 
-# UC Berkeley Colormap
+# UC Berkeley Colormap (decent diverging map)
 UCB_cmap: ListedColormap = make_color_map([UCB_COLORS['blue'],UCB_COLORS['lightgray'],UCB_COLORS['gold']])

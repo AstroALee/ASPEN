@@ -17,6 +17,7 @@ PHY = cc.PhysicsConstants()
 class PhysicsConstants:
     """
     A collection of fundamental physical constants, almost always in SI units.
+    All values are floats.
 
     Use the list functions to print out the constants:
     list_gravity_constants()
@@ -25,27 +26,34 @@ class PhysicsConstants:
     list_quantum_mechanics_constants()
     """
 
+    # Atomic Mass Unit 
+    AMU: float = 1.66053906660e-27  # kg
+
     # Mass of protons, neutrons, and electrons
     # Source: CODATA 2018
-    M_PROTON: float = 1.67262192369e-27  # kg
-    M_NEUTRON: float = 1.67492749804e-27  # kg
-    M_ELECTRON: float = 9.1093837015e-31  # kg
+    M_PROTON: float =  1.0072764665789*AMU #1.67262192369e-27  # kg
+    M_NEUTRON: float = 1.00866491606*AMU #1.67492749804e-27  # kg
+    M_ELECTRON: float = 5.485799090441e-4*AMU # kg #9.1093837015e-31  # kg
 
     # Gravity 
     # =-=-=-=-=-=--==-=-==-=-=-=-==-=-===-=-=-
     def list_gravity_constants(self):
         print(f'''G_NEWTON: {self.G_NEWTON} , m^3 kg^-1 s^-2 (Newton's gravitational constant)''')
+        print(f'''G_EINSTEIN: {self.G_EINSTEIN} , m^3 kg^-1 s^-2 (Einstein's G = 8*pi*G_Newton)''')
         return 
 
     # Gravitational constant
     G_NEWTON: float = 6.67430e-11  # m^3 kg^-1 s^-2
+
+    # Einstein's gravitational constant
+    G_EINSTEIN: float = 8 * np.pi * G_NEWTON  # m^3 kg^-1 s^-2
 
 
     # Electromagnetism
     # =-=-=-=-=-=--==-=-==-=-=-=-==-=-===-=-=-
     def list_electromagnetism_constants(self):
         print(f'''C_LIGHT: {self.C_LIGHT} , m/s (Speed of light in vacuum)''')
-        print(f'''FARADAY: {self.FARADAY} , C/mol (Faraday's constant)''')
+        print(f'''FARADAY_CHARGE: {self.FARADAY_CHARGE} , C/mol (charge/mole of electrons)''')
         print(f'''EPSILON_0: {self.EPSILON_0} , F/m (Permitivity of Free Space)''')
         print(f'''MU_0: {self.MU_0} , N/A^2 (Permeability of Free Space)''')
         print(f'''K_COULOMB: {self.K_COULOMB} , N*m^2/C^2 (Coulomb's constant)''')
@@ -56,7 +64,7 @@ class PhysicsConstants:
     C_LIGHT: float = 299792458  # m/s
 
     # Faraday's constant
-    FARADAY: float = 96485.3321233100184  # C/mol
+    FARADAY_CHARGE: float = 96485.3321233100184  # C/mol
 
     # Permitivity and Permeability of Free Space
     EPSILON_0: float = 8.8541878128e-12  # F/m
@@ -118,9 +126,6 @@ class PhysicsConstants:
 
     # Radiation constant
     A_RADIATION: float = 4 * SB_CONSTANT / C_LIGHT  # J/(m^3*K^4)
-
-    # Atomic Mass Unit 
-    AMU: float = 1.66053906660e-27  # kg
 
     # Muon mass 
     M_MUON: float = 0.113428925*AMU  # kg

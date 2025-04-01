@@ -4,6 +4,9 @@ Colorbar generation and nice colorbars for matplotlib
 
 import numpy as np
 from matplotlib.colors import ListedColormap, to_rgba
+from cycler import cycler
+
+import matplotlib.pyplot as plt
 
 """
 Notes: Dictionary keys are data, not variables — they are meant to be accessed dynamically, 
@@ -11,45 +14,65 @@ and all-caps keys are awkward to type and read in most use cases. So they are lo
 """
 
 
+
+
 # Saint Mary's College of California color dictionary
+# Order matters for the cycler 
 SMC_COLORS: dict[str, str] = {
     "red" : '#CF3339' ,     # slightly dark red 
     "navy" : '#143257' ,    # dark navy
-    "silver" : '#afb0a2' , # darker silver from '#BEC1C1' 
-    "origsilver" : '#BEC1C1', # original silver 
-    "garden" : '#F3B3A2' , # salmon color 
-    "bay" : '#6CC2C3' , # light teal 
-    "gray" : '#81959B' , # gael gray 
+    "water" : '#6298C3' , # fountain water, muted blue 
     "sun" : '#F2BA2A' , # gold 
     "canyon" : '#0A5B5E' , # dark teal green 
-    "cross" : '#D1D2C4' , # off-white 
+    "silver" : '#afb0a2' , # darker silver from '#BEC1C1' 
     "lawn" : '#67934F' , # grass green 
-    "water" : '#6298C3' , # fountain water, muted blue 
+    "bay" : '#6CC2C3' , # light teal 
     "skies" : '#13A3CE' , # brighter sky blue 
+    "garden" : '#F3B3A2' , # salmon color 
+    "origsilver" : '#BEC1C1', # original silver 
+    "gray" : '#81959B' , # gael gray 
+    "cross" : '#D1D2C4' , # off-white 
 }
 
+# Cycler for SMC colors
+SMC_cycler = cycler(color=SMC_COLORS.values())
+
+
+
+
 # Northwestern University color dictionary
+# Order matters for the cycler 
 NORTHWESTERN_COLORS: dict[str, str] = {
-    "darkestpurple" : '#260642' , # Darkest purple
-    "darkpurple" : '#38185b' , # Dark purple
     "purple" : '#4e2b84' , # Northwestern purple
-    "lightpurple" : '#765d9f' , # Light purple
     "lighterpurple" : '#a393c0' , # Lighter purple
+    "darkestpurple" : '#260642' , # Darkest purple
+    "lightpurple" : '#765d9f' , # Light purple
     "lightestpurple" : '#e1ddec' , # Lightest purple
+    "darkpurple" : '#38185b' , # Dark purple
     "lightgray" : '#f0f0f0' , # Light gray
 }
 
+# Cycler for Northwestern colors
+NU_cycler = cycler(color=NORTHWESTERN_COLORS.values())
+
+
+
 # UC Berkeley color dictionary
+# Order matters for the cycler 
 UCB_COLORS: dict[str, str] = {
     "blue" : '#1c2676' , # Berkeley Blue
-    "gold" : '#f4b516' , # California Gold
+    "heritage" : '#c09748' , # Heritage Gold
     "rose" : '#770747' , # Rose
     "purple" : '#431170' , # Purple
     "green" : '#19553a' , # Green
     "gray" : '#808080' , # Gray
     "lightgray" : '#f2f2f2' , # Light Gray
-    "heritage" : '#c09748' , # Heritage Gold
+    "gold" : '#f4b516' , # California Gold
 }
+
+# Cycler for UC Berkeley colors
+UCB_cycler = cycler(color=UCB_COLORS.values())
+
 
 # Color themes used in LaTeX documents 
 AARON_TEAL_THEME: dict[str, str] = {
@@ -60,6 +83,11 @@ AARON_TEAL_THEME: dict[str, str] = {
     "colorlinks" : '#284695' , # Blue
 }
 
+# Cycler for Aaron's Teal theme
+TEAL_cycler = cycler(color=AARON_TEAL_THEME.values())
+
+
+
 AARON_RED_THEME: dict[str, str] = {
     "color1" : '#99111f' , # Red
     "color2" : '#348b8a' , # Teal
@@ -67,6 +95,9 @@ AARON_RED_THEME: dict[str, str] = {
     "color4" : '#153257' , # Navy
     "colorlinks" : '#284695' , # Blue
 }
+
+# Cycler for Aaron's Red theme
+RED_cycler = cycler(color=AARON_RED_THEME.values())
 
 
 
@@ -118,8 +149,40 @@ def make_color_map(listColors: list[str], num_points: int = 512,
 # Saint Mary's College Colormaps 
 SMC_cmap: ListedColormap = make_color_map([SMC_COLORS['red'],SMC_COLORS['origsilver'],SMC_COLORS['navy']])
 
+def use_smc_colors_default():
+    """
+    Set the default color cycle to the Saint Mary's College color scheme.
+    """
+    plt.rcParams.update({
+        'image.cmap' : SMC_cmap,
+        'axes.prop_cycle' : SMC_cycler,
+    })
+    return None
+
+
 # Northwestern Colormap (decent sequential map)
 NU_cmap: ListedColormap = make_color_map([NORTHWESTERN_COLORS['lightestpurple'],NORTHWESTERN_COLORS['lighterpurple'],NORTHWESTERN_COLORS['lightpurple'],NORTHWESTERN_COLORS['purple'],NORTHWESTERN_COLORS['darkpurple'],NORTHWESTERN_COLORS['darkestpurple']])
 
+def use_nu_colors_default():
+    """
+    Set the default color cycle to the Northwestern color scheme.
+    """
+    plt.rcParams.update({
+        'image.cmap' : NU_cmap,
+        'axes.prop_cycle' : NU_cycler,
+    })
+    return None
+
+
 # UC Berkeley Colormap (decent diverging map)
 UCB_cmap: ListedColormap = make_color_map([UCB_COLORS['blue'],UCB_COLORS['lightgray'],UCB_COLORS['gold']])
+
+def use_ucb_colors_default():
+    """
+    Set the default color cycle to the UC Berkeley color scheme.
+    """
+    plt.rcParams.update({
+        'image.cmap' : UCB_cmap,
+        'axes.prop_cycle' : UCB_cycler,
+    })
+    return None

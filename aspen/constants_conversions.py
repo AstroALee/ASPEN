@@ -58,6 +58,14 @@ class PhysicsConstants:
         print(f'''MU_0: {self.MU_0} , N/A^2 (Permeability of Free Space)''')
         print(f'''K_COULOMB: {self.K_COULOMB} , N*m^2/C^2 (Coulomb's constant)''')
         print(f'''E_CHARGE: {self.E_CHARGE} , C (Fundamental charge unit)''')
+        print(f'''R_ELECTRON: {self.R_ELECTRON} , m (Classical electron radius)''')
+        print(f'''AMU: {self.AMU} , kg (Atomic Mass Unit)''')
+        print(f'''M_PROTON: {self.M_PROTON} , kg (Mass of a proton)''')
+        print(f'''M_NEUTRON: {self.M_NEUTRON} , kg (Mass of a neutron)''')
+        print(f'''M_ELECTRON: {self.M_ELECTRON} , kg (Mass of an electron)''')
+        print(f'''M_PROTON_MEV: {self.M_PROTON_MEV} , MeV (Proton mass in MeV)''')
+        print(f'''M_NEUTRON_MEV: {self.M_NEUTRON_MEV} , MeV (Neutron mass in MeV)''')
+        print(f'''M_ELECTRON_MEV: {self.M_ELECTRON_MEV} , MeV (Electron mass in MeV)''')
         return
 
     # Speed of light in vacuum
@@ -110,10 +118,6 @@ class PhysicsConstants:
         print(f'''H_PLANCK_REDUCED: {self.H_PLANCK_REDUCED} , J*s (Reduced Planck's constant)''')
         print(f'''SB_CONSTANT: {self.SB_CONSTANT} , W/(m^2*K^4) (Stefan-Boltzmann constant)''')
         print(f'''A_RADIATION: {self.A_RADIATION} , J/(m^3*K^4) (Radiation constant)''')
-        print(f'''M_PROTON: {self.M_PROTON} , kg (Mass of a proton)''')
-        print(f'''M_NEUTRON: {self.M_NEUTRON} , kg (Mass of a neutron)''')
-        print(f'''M_ELECTRON: {self.M_ELECTRON} , kg (Mass of an electron)''')
-        print(f'''AMU: {self.AMU} , kg (Atomic Mass Unit)''')
         print(f'''BOHR_RADIUS: {self.BOHR_RADIUS} , m (Bohr radius)''')
         return
 

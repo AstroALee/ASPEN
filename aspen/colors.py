@@ -7,6 +7,7 @@ from matplotlib.colors import ListedColormap, to_rgba
 from cycler import cycler
 
 import matplotlib.pyplot as plt
+import matplotlib 
 
 """
 Notes: Dictionary keys are data, not variables — they are meant to be accessed dynamically, 
@@ -101,7 +102,7 @@ RED_cycler = cycler(color=AARON_RED_THEME.values())
 
 
 
-def make_color_map(listColors: list[str], num_points: int = 512, 
+def make_color_map(listColors: list[str], num_points: int = 1024, cmap_name: str = 'custom',
                     leftColor: str | None = None, rightColor: str | None = None ) -> ListedColormap:
     """
     Create a colormap from a list of colors by linearly interpolating across RGB values.
@@ -141,48 +142,69 @@ def make_color_map(listColors: list[str], num_points: int = 512,
         right_RGBA = to_rgba(rightColor)
         vals[-1, :] = right_RGBA
 
-    return( ListedColormap(vals) )
+    return( ListedColormap(vals,name=cmap_name) )
 
 
 
 
 # Saint Mary's College Colormaps 
-SMC_cmap: ListedColormap = make_color_map([SMC_COLORS['red'],SMC_COLORS['origsilver'],SMC_COLORS['navy']])
+SMC_cmap: ListedColormap = make_color_map([SMC_COLORS['red'],SMC_COLORS['origsilver'],SMC_COLORS['navy']], cmap_name='smc_cmap')
+#matplotlib.colormaps.register(SMC_cmap, name='smc_cmap')
+matplotlib.colormaps.register(SMC_cmap)
 
 def use_smc_colors_default():
     """
     Set the default color cycle to the Saint Mary's College color scheme.
+
+    plt.rcdefaults() will reset everything. 
+
+    original_rc_params = plt.rcParams.copy()
+    plt.rcParams.update(original_rc_params)    restores to copy 
     """
     plt.rcParams.update({
-        'image.cmap' : SMC_cmap,
+        'image.cmap' : 'smc_cmap',
         'axes.prop_cycle' : SMC_cycler,
     })
     return None
 
 
 # Northwestern Colormap (decent sequential map)
-NU_cmap: ListedColormap = make_color_map([NORTHWESTERN_COLORS['lightestpurple'],NORTHWESTERN_COLORS['lighterpurple'],NORTHWESTERN_COLORS['lightpurple'],NORTHWESTERN_COLORS['purple'],NORTHWESTERN_COLORS['darkpurple'],NORTHWESTERN_COLORS['darkestpurple']])
+NU_cmap: ListedColormap = make_color_map(['#ffffff',NORTHWESTERN_COLORS['lightestpurple'],NORTHWESTERN_COLORS['lighterpurple'],NORTHWESTERN_COLORS['lightpurple'],NORTHWESTERN_COLORS['purple'],NORTHWESTERN_COLORS['darkpurple'],NORTHWESTERN_COLORS['darkestpurple']], cmap_name='nu')
+#matplotlib.colormaps.register(NU_cmap, name='nu_cmap')
+matplotlib.colormaps.register(NU_cmap)
 
 def use_nu_colors_default():
     """
     Set the default color cycle to the Northwestern color scheme.
     """
     plt.rcParams.update({
-        'image.cmap' : NU_cmap,
+        'image.cmap' : 'nu_cmap',
         'axes.prop_cycle' : NU_cycler,
     })
     return None
 
 
 # UC Berkeley Colormap (decent diverging map)
-UCB_cmap: ListedColormap = make_color_map([UCB_COLORS['blue'],UCB_COLORS['lightgray'],UCB_COLORS['gold']])
+UCB_cmap: ListedColormap = make_color_map([UCB_COLORS['blue'],UCB_COLORS['lightgray'],UCB_COLORS['gold']], cmap_name='ucb')
+#matplotlib.colormaps.register(UCB_cmap, name='ucb_cmap')
+matplotlib.colormaps.register(UCB_cmap)
 
 def use_ucb_colors_default():
     """
     Set the default color cycle to the UC Berkeley color scheme.
     """
     plt.rcParams.update({
-        'image.cmap' : UCB_cmap,
+        'image.cmap' : 'ucb_cmap',
         'axes.prop_cycle' : UCB_cycler,
     })
     return None
+
+
+# Teal Theme Colormap, overwrites left as white and right as burnt orange. Entire colormap is shades of teal. 
+deep_sea_cmap: ListedColormap = make_color_map([ '#a5cece','#7cb8b8','#52a5a5', '#369090','#2e7c7c', '#1b4854', '#09212b'], cmap_name='deep_sea', leftColor = '#ffffff', rightColor='#aa3e24')
+
+# Teal Theme without the left and right colors, just shades of teal
+deep_sea_cmap2: ListedColormap = make_color_map([ '#a5cece','#7cb8b8','#52a5a5', '#369090','#2e7c7c', '#1b4854', '#09212b'], cmap_name='deep_sea2')
+
+# Teal Theme Colormap (Teals to Orange/Pinks)
+teal2_cmap: ListedColormap = make_color_map([ '#023438','#045866','#187188', '#068e92','#fe3967', '#fe6583', '#f19100', '#f1c000'], cmap_name='ocean_sunset')

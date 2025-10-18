@@ -15,7 +15,21 @@ and all-caps keys are awkward to type and read in most use cases. So they are lo
 """
 
 
+# ORust from LaTeX colors 
+# Order matters for the cycler 
+ORUST_COLORS: dict[str, str] = {
+    "teal" : '#137c94' ,
+    "red" : '#af1d03' ,
+    "purple" : '#7058be' ,
+    "orange" : '#f46b45' ,
+    "blue" : '#0090bb' ,
+    "wine" : '#bd0377' ,
+    "mint" : '#3ddbd9' ,
+    "brightteal" : '#03a9af',
+}
 
+# Cycler for ORUST colors
+ORUST_cycler = cycler(color=ORUST_COLORS.values())
 
 # Saint Mary's College of California color dictionary
 # Order matters for the cycler 
@@ -109,7 +123,7 @@ def make_color_map(listColors: list[str], num_points: int = 1024, cmap_name: str
 
     Args:
         listColors (list of str): List of color hex codes or color names.
-        num_points (int, opt = 512): Number of interpolated color points in the resulting colormap.
+        num_points (int, opt = 1024): Number of interpolated color points in the resulting colormap.
         leftColor (str, optional): Special color to use for the left end (0) of the colormap.
         rightColor (str, optional): Special color to use for the right end (1) of the colormap.
 
@@ -145,7 +159,20 @@ def make_color_map(listColors: list[str], num_points: int = 1024, cmap_name: str
     return( ListedColormap(vals,name=cmap_name) )
 
 
+# ORUST Colormaps
+ORUST_cmap: ListedColormap = make_color_map([ORUST_COLORS['teal'], ORUST_COLORS['red'], ORUST_COLORS['purple'], ORUST_COLORS['blue'], ORUST_COLORS['mint'], ORUST_COLORS['brightteal']], cmap_name='orust_cmap')
+#matplotlib.colormaps.register(ORUST_cmap, name='orust_cmap')
+matplotlib.colormaps.register(ORUST_cmap)
 
+def use_orust_colors_default():
+    """
+    Set the default color cycle to the ORUST color scheme.
+    """
+    plt.rcParams.update({
+        'image.cmap' : 'orust_cmap',
+        'axes.prop_cycle' : ORUST_cycler,
+    })
+    return None
 
 # Saint Mary's College Colormaps 
 SMC_cmap: ListedColormap = make_color_map([SMC_COLORS['red'],SMC_COLORS['origsilver'],SMC_COLORS['navy']], cmap_name='smc_cmap')

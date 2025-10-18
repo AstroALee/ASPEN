@@ -5,7 +5,7 @@ import numpy as np
 
 common_rcParams = {
     'figure.figsize':(7.5,5)   , # (width,height, , convention: wide = 1.5*tall, size of canvas
-    'figure.dpi':150   ,    # scales elements on canvas. Default 100 
+    'figure.dpi':200   ,    # scales elements on canvas. Default 100 
     'axes.labelsize': 15 ,
     'axes.titlesize': 15 ,
     'axes.linewidth': 1.2 ,
@@ -195,16 +195,16 @@ def gen_IntegerHisto(scores,maxScore,Qinfo,letters,title,bins,tick_list,cbar,out
     # =-=-=-==-=-=-==-=-=-==-=-=-==-=-=-=
     thetitle = title 
     if(Qinfo["showMean"]):
-        thetitle += " , " + f'Mean $\mu$: {score_mean:.1f}'
+        thetitle += " , " + r'Mean $\mu$: ' + f'{score_mean:.1f}'
 
     if(Qinfo["showMedian"]):
-        thetitle += " , " + f'Median $Q_2$: {round(score_median,1)}'
+        thetitle += " , " + r'Median $Q_2$: ' + f'{round(score_median,1)}'
 
     if(Qinfo["showMode"]):
         if(len(score_mode)>1):
-            thetitle += " , " + 'Modes $\^M$: '
+            thetitle += " , " + r'Modes $\^M$: '
         else:
-            thetitle += " , " + 'Mode $\^M$: '
+            thetitle += " , " + r'Mode $\^M$: '
         for idx,local_mode in enumerate(score_mode):
             thetitle += f'{int(local_mode)}'
             if(idx<len(score_mode)-1):

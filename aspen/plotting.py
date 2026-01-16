@@ -5,9 +5,9 @@ import numpy as np
 
 common_rcParams = {
     'figure.figsize':(7.5,5)   , # (width,height, , convention: wide = 1.5*tall, size of canvas
-    'figure.dpi':200   ,    # scales elements on canvas. Default 100 
-    'axes.labelsize': 15 ,
-    'axes.titlesize': 15 ,
+    'figure.dpi':150   ,    # scales elements on canvas. Default 100 
+    'axes.labelsize': 12 ,
+    'axes.titlesize': 13 ,
     'axes.linewidth': 1.2 ,
     'grid.linestyle': '-.' ,
     'grid.alpha': 0.4 ,
@@ -15,16 +15,18 @@ common_rcParams = {
     'legend.framealpha': 1.0  ,
     'legend.shadow': False  ,
     'font.size': 14 ,
-    'xtick.labelsize': 13 ,
+    'xtick.labelsize': 12 ,
     'xtick.major.size': 8 , # default 3 
     'xtick.minor.size': 5 ,  
     'xtick.major.width': 1.2 , # default 0.8 
     'xtick.direction': 'inout' ,
-    'ytick.labelsize': 13 ,
+    #'xtick.top': True ,
+    'ytick.labelsize': 12 ,
     'ytick.major.size': 8 , # default 3 
     'ytick.minor.size': 5 , 
     'ytick.major.width': 1.2 , # default 0.8 
     'ytick.direction': 'inout'  ,
+    'ytick.right': True ,
 }
 
 def make_better_plots():

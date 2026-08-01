@@ -158,6 +158,10 @@ def make_color_map(listColors: list[str], num_points: int = 1024, cmap_name: str
 
     return( ListedColormap(vals,name=cmap_name) )
 
+# e.g., 
+# My_Cmap = make_color_map(['#ff0000', '#00ff00', '#0000ff'], num_points=256, cmap_name='my_cmap', leftColor='#ffffff', rightColor='#000000')
+# matplotlib.colormaps.register(My_Cmap, name='my_cmap')
+
 
 # ORUST Colormaps
 ORUST_cmap: ListedColormap = make_color_map([ORUST_COLORS['teal'], ORUST_COLORS['red'], ORUST_COLORS['purple'], ORUST_COLORS['blue'], ORUST_COLORS['mint'], ORUST_COLORS['brightteal']], cmap_name='orust_cmap')
